@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 	
 			setSlide()
 			setCurrentDot()
-			console.log(currentSlideIndex);
 		})
 		
 	}
