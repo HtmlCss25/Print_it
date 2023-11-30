@@ -26,11 +26,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 	const dots = document.getElementsByClassName('dot');
 	let currentSlideIndex = 0;
 
-	// function setSlide(){
-
-		
-
-	// }
 
 	function incrementSlideIndex(){
 		if(currentSlideIndex===0){
@@ -47,17 +42,41 @@ document.addEventListener("DOMContentLoaded",()=>{
 		}
 	}
 
+	function setSlide(){
+
+		bannerImage.src = `./assets/images/slideshow/${slides[currentSlideIndex].image}`;
+		bannerText.innerHTML = slides[currentSlideIndex].tagLine;
+
+	}
+
+	function setCurrentDot(){
+
+		for(let i=0;i<dots.length;i++){
+
+			if(dots[i].classList.contains('dot_selected')){
+				dots[i].classList.remove('dot_selected');
+			}
+			
+			dots[currentSlideIndex].classList.add('dot_selected');
+
+		}
+
+	}
+
 	arrowLeft.addEventListener('click',()=>{
 
 		incrementSlideIndex()
 
+		setSlide()
+		setCurrentDot()
 		console.log(currentSlideIndex);
 	})
 	arrowRight.addEventListener('click',()=>{
 
 		decrementSlideIndex()
-
-		console.log(currentSlideIndex);
+		setSlide()
+		setCurrentDot()
+		// console.log(currentSlideIndex);
 	})
 
 
