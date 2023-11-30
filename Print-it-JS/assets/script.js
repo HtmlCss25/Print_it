@@ -19,22 +19,21 @@ const slides = [
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-	const arrowLeft = document.querySelector('.arrow_left');
-	const arrowRight = document.querySelector('.arrow_right');
+	const arrows = document.getElementsByClassName('arrow');
 	const bannerImage = document.querySelector('.banner-img');
 	const bannerText = document.querySelector('#banner-text');
 	const dots = document.getElementsByClassName('dot');
 	let currentSlideIndex = 0;
 
 
-	function incrementSlideIndex(){
+	function decrementSlideIndex(){
 		if(currentSlideIndex===0){
 			currentSlideIndex = 3;
 		}else{
 			currentSlideIndex-=1;
 		}
 	}
-	function decrementSlideIndex(){
+	function incrementSlideIndex(){
 		if(currentSlideIndex===3){
 			currentSlideIndex = 0;
 		}else{
@@ -63,22 +62,22 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 	}
 
-	arrowLeft.addEventListener('click',()=>{
+	for(const arrow of arrows){
 
-		incrementSlideIndex()
-
-		setSlide()
-		setCurrentDot()
-		console.log(currentSlideIndex);
-	})
-	arrowRight.addEventListener('click',()=>{
-
-		decrementSlideIndex()
-		setSlide()
-		setCurrentDot()
-		// console.log(currentSlideIndex);
-	})
-
+		arrow.addEventListener('click',(e)=>{
+			if(e.target.classList.contains('arrow_right')){
+				incrementSlideIndex()
+			}
+			if(e.target.classList.contains('arrow_left')){
+				decrementSlideIndex()
+			}
+	
+			setSlide()
+			setCurrentDot()
+			console.log(currentSlideIndex);
+		})
+		
+	}
 
 })
 
